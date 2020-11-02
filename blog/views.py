@@ -2,8 +2,32 @@ from django.shortcuts import render
 
 
 def home(request):
+    news = [
+        {
+            'title': 'Наша первая статья',
+            'text': 'Полный текст статьи',
+            'date': '1 января 2020 года',
+            'avtor': 'Джон'
+        },
+        {
+            'title': 'Наша вторая статья',
+            'text': 'Полный текст статьи',
+            'date': '2 января 2020 года',
+
+        }
+    ]
+
     data = {
-        'home': 'HOME'
+        'title': 'Главная страница',
+        'news': news
     }
-    render(request, 'blog/home.html', data)
+    return render(request, 'blog/home.html', data)
+
+
+def contact(request):
+    data = {
+        'title': 'Страница контакты',
+        'contact': 'Контакты'
+    }
+    return render(request, 'blog/contacti.html', context=data)
 

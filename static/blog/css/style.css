@@ -1,0 +1,19 @@
+body {
+    background: #fafafa;
+}
+
+.card-aside {
+    background: #E6E6E6;
+}
+
+footer {
+    width: 70%;
+    margin-right: 15%;
+    margin-left: 15%;
+}
+@media (max-width: 576px){
+    .al {
+        display:none;
+    }
+}
+

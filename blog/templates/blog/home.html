@@ -1,13 +1,47 @@
-<!doctype html>
-<html lang="ru">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>{{ home }}</title>
-</head>
-<body>
-<h1>{{ home }}</h1>
-</body>
-</html>
+{% extends 'blog/base.html' %}
+
+{% block title %}
+    {{ title }}
+{% endblock %}
+
+{% block content %}
+
+{% for new in news %}
+<div class="card mb-3" style="max-width: 640px;">
+  <img src="https://i.7fon.org/1000/u272514.jpg" class="card-img-top" alt="photo">
+  <div class="card-body">
+    <h5 class="p-2 mb-1 bg-light text-dark">{{ new.title }}</h5>
+    <p class="p-2 mb-1 bg-white text-dark">{{ new.text }}</p>
+    <p class="p-2 mb-1 bg-white text-muted"><small class="text-muted">{{ new.date }}</small></p>
+    <p class="p-2 mb-1 bg-transparent text-dark">Автор:
+         {% if new.avtor %}{{ new.avtor }}
+         {% else %} Admin
+         {% endif %}
+    </p>
+      <button type="button" class="close" aria-label="Close">
+  <span aria-hidden="true">&times;</span>
+</button>
+  </div>
+</div>
+{% endfor %}
+
+{% endblock %}
+
+{% block aside_block %}
+<h3 class="mt-2 mb-3">Интересные статьи</h3>
+{% for new in news %}
+<div class="card mb-3 " style="max-width: 300px;" >
+  <img src="https://i.7fon.org/1000/u272514.jpg" class="card-img-top" alt="photo">
+  <div class="card-body card-aside">
+    <h5 class="card-title">{{ new.title }}</h5>
+    <p class="card-text">{{ new.text }}</p>
+    <p class="card-text"><small class="text-muted">{{ new.date }}</small></p>
+    <p class="card-text">Автор:
+         {% if new.avtor %}{{ new.avtor }}
+         {% else %} Admin
+         {% endif %}
+    </p>
+  </div>
+</div>
+{% endfor %}
+{% endblock %}
