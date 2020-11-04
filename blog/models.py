@@ -8,6 +8,7 @@ class News(models.Model):
     text = models.TextField('Основной текст статьи')
     date = models.DateTimeField('Дата', default=timezone.now)
     avtor = models.ForeignKey(User, verbose_name='Автор', on_delete=models.CASCADE)
+    img_article = models.ImageField('Фото статьи', default='default-article.jpg', upload_to='img_article')
 
     views = models.IntegerField('Просмотры', default=1)
     # sizes = (

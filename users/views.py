@@ -3,6 +3,7 @@ from django.shortcuts import redirect
 from blog.models import News
 from .forms import UserRegisterForm
 from django.contrib import messages
+from django.contrib.auth.decorators import login_required
 
 
 def register(request):
@@ -23,3 +24,8 @@ def register(request):
         'form': form
     }
     return render(request, 'users/registertration.html', context=data)
+
+
+@login_required
+def profile(request):
+    return render(request, 'users/profile.html')

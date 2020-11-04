@@ -1,0 +1,44 @@
+{% extends 'blog/base.html' %}
+
+{% block title %}
+    Кабинет пользователя
+{% endblock %}
+
+{% block content %}
+<h2>Кабинет пользователя</h2>
+
+<div class="media text-muted pt-3">
+      <img class="bd-placeholder-img mr-2 rounded" width="64" height="64" src="{{ user.profile.img_profile.url }}">
+      <p class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
+        <strong class="d-block text-gray-dark">@{{ user.username }}</strong>
+        {% if user.email %}
+          <b>Email:</b> {{ user.email }}
+        {% endif %}
+        {% if user.first_name %}
+            <br><b>Имя:</b> {{ user.first_name }}
+        {% endif %}
+        {% if user.last_name %}
+            <br><b>Фамилия:</b> {{ user.last_name }}
+        {% endif %}
+      </p>
+</div>
+{% endblock %}
+
+{% block aside_block %}
+<h3 class="mt-2 mb-3">Интересные статьи</h3>
+{% for new in obj%}
+<div class="card mb-3 " style="max-width: 300px;" >
+  <img src="https://i.7fon.org/1000/u272514.jpg" class="card-img-top" alt="photo">
+  <div class="card-body card-aside">
+    <h5 class="card-title">{{ new.title }}</h5>
+    <p class="card-text">{{ new.text|truncatechars:150 }}</p>
+    <p class="card-text"><small class="text-muted">{{ new.date }}</small></p>
+    <p class="card-text">Автор:
+         {% if new.avtor %}{{ new.avtor }}
+         {% else %} Admin
+         {% endif %}
+    </p>
+  </div>
+</div>
+{% endfor %}
+{% endblock %}

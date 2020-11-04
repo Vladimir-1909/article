@@ -1,7 +1,7 @@
 {% extends 'blog/base.html' %}
 
 {% block title %}
-    {{ title }}
+    Войти в личный кабинет
 {% endblock %}
 
 {% block content %}
@@ -9,18 +9,16 @@
     <span aria-hidden="true">&times;</span>
 </button></a>
 <h2>{{ title_form }}</h2>
-    <form class="form-register" method="post">
+    <form class="form-register auth" method="post">
         {% csrf_token %}
         {{ form.as_p }}
-        <button class="btn btn-outline-warning" type="submit">Зарегистрироваться</button>
-        <hr>
-        <p>Уже зарегистрированы?<a href="{% url 'user' %}"> Войти</a></p>
+        <button class="btn btn-outline-warning" type="submit">Войти</button>
     </form>
 {% endblock %}
 
 {% block aside_block %}
 <h3 class="mt-2 mb-3">Интересные статьи</h3>
-{% for new in news %}
+{% for new in obj%}
 <div class="card mb-3 " style="max-width: 300px;" >
   <img src="https://i.7fon.org/1000/u272514.jpg" class="card-img-top" alt="photo">
   <div class="card-body card-aside">

@@ -8,7 +8,7 @@
 
 {% for new in news %}
 <div class="card mb-3" style="max-width: 640px;">
-  <img src="https://i.7fon.org/1000/u272514.jpg" class="card-img-top" alt="photo">
+  <img src="{{ new.img_article.url }}" class="card-img-top" alt="photo">
   <div class="card-body">
     <h5 class="p-2 mb-1 bg-light text-dark">{{ new.title }}</h5>
     <p class="p-2 mb-1 bg-white text-dark">{{ new.text|striptags|truncatechars:200 }}</p>
@@ -31,7 +31,7 @@
 <h3 class="mt-2 mb-3">Интересные статьи</h3>
 {% for new in news %}
 <div class="card mb-3 " style="max-width: 300px;" >
-  <img src="https://i.7fon.org/1000/u272514.jpg" class="card-img-top" alt="photo">
+  <img src="{{ new.img_article.url }}" class="card-img-top" alt="photo">
   <div class="card-body card-aside">
     <h5 class="card-title">{{ new.title }}</h5>
     <p class="card-text">{{ new.text|truncatechars:150 }}</p>
