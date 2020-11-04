@@ -12,15 +12,15 @@
   <div class="card-body">
     <h5 class="p-2 mb-1 bg-light text-dark">{{ new.title }}</h5>
     <p class="p-2 mb-1 bg-white text-dark">{{ new.text|striptags|truncatechars:200 }}</p>
-    <p class="p-2 mb-1 bg-white text-muted"><small class="text-muted">Публикация: {{ new.date }}</small></p>
-    <p class="p-2 mb-1 bg-transparent text-dark">Автор:
-         {% if new.avtor %}{{ new.avtor }}
-         {% else %} Admin
-         {% endif %}
-    </p>
-      <button type="button" class="close" aria-label="Close">
-  <span aria-hidden="true">&times;</span>
-</button>
+      <div class="media">
+            <div>
+                <img src="{{ new.avtor.profile.img_profile.url }}" alt="{{ new.avtor }}" class="user_images">
+            </div>
+        <div class="mt-2">
+            <span class="text-muted">Публикация: {{ new.date|date:"d E Y в H:i" }}</span>
+            <p><b>Автор:</b> <a href="">{{ new.avtor }}</a></p>
+        </div>
+      </div>
   </div>
 </div>
 {% endfor %}
