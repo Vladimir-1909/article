@@ -5,16 +5,11 @@
 {% endblock %}
 
 {% block content %}
-<a href="{% url 'home' %}"><button type="button" class="close" aria-label="Close">
-    <span aria-hidden="true">&times;</span>
-</button></a>
-<h2>{{ title_form }}</h2>
-    <form class="form-register" enctype="multipart/form-data" method="post">
+<h2>{{ title_text }}{{ object.title }} ?</h2>
+    <form class="form-register auth" enctype="multipart/form-data" method="post">
         {% csrf_token %}
-        {{ form.as_p }}
-        <button class="btn btn-outline-warning" type="submit">Зарегистрироваться</button>
-        <hr>
-        <p>Уже зарегистрированы?<a href="{% url 'user' %}"> Войти</a></p>
+        <button class="btn btn-outline-danger" type="submit">{{ button_text_yes }}</button>
+        <a href="{% url 'news-detail' object.id %}">{{ button_text_no }}</a>
     </form>
 {% endblock %}
 
@@ -27,11 +22,7 @@
     <h5 class="card-title">{{ new.title }}</h5>
     <p class="card-text">{{ new.text|truncatechars:150 }}</p>
     <p class="card-text"><small class="text-muted">{{ new.date }}</small></p>
-    <p class="card-text">Автор:
-         {% if new.avtor %}{{ new.avtor }}
-         {% else %} Admin
-         {% endif %}
-    </p>
+    <p class="card-text">Автор: {{ new.avtor }}</p>
   </div>
 </div>
 {% endfor %}

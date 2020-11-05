@@ -20,7 +20,7 @@ def register(request):
     data = {
         'title': 'Страница регистрации',
         'title_form': 'Регистрация',
-        'news': News.objects.all(),
+        'news': News.objects.order_by('-date'),
         'form': form
     }
     return render(request, 'users/registertration.html', context=data)

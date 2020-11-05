@@ -44,12 +44,17 @@ class UserRegisterForm(UserCreationForm):
                 'placeholder': 'Подтвердите пароль'
             })
     )
+    img_profile = forms.ImageField(
+        label='Загрузить фото',
+        required=False,
+        widget=forms.FileInput
+    )
 
     # some = forms.ModelChoiceField(queryset=User.objects.all())
 
     class Meta:
         model = User
-        fields = ['email', 'username', 'password1', 'password2']
+        fields = ['email', 'username', 'password1', 'password2', 'img_profile']
 
 
 class UserUpdateForm(forms.ModelForm):

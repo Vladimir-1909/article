@@ -23,6 +23,7 @@
       </p>
 </div>
 <form class="form-register mt-4" enctype="multipart/form-data" method="post">
+    <h3>Изменить данные</h3>
         {% csrf_token %}
         {{ updateUserForm.as_p }}
         {{ profileForm.as_p }}
