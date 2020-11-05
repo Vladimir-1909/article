@@ -5,7 +5,8 @@
 {% endblock %}
 
 {% block content %}
-
+<h2>Все статьи от автора {{ view.kwargs.username }}</h2>
+<h3>Количество: {{ page_obj.paginator.count }}</h3>
 {% for new in news %}
 <div class="card mb-3" style="max-width: 640px;">
   <img src="{{ new.img_article.url }}" class="card-img-top" alt="photo">

@@ -12,14 +12,14 @@
   <img src="{{ object.img_article.url }}" class="card-img-top" alt="photo">
   <div class="card-body">
     <h5 class="p-2 mb-1 bg-light text-dark">{{ object.title }}</h5>
-    <p class="p-2 mb-1 bg-white text-dark">{{ object.text }}</p>
+    <p class="p-2 mb-1 bg-white text-dark">{{ object.text|safe|linebreaks }}</p>
       <div class="media">
             <div>
                 <img src="{{ object.avtor.profile.img_profile.url }}" alt="{{ object.avtor }}" class="user_images">
             </div>
         <div class="mt-2">
             <span class="text-muted">Публикация: {{ object.date|date:"d E Y в H:i" }}</span>
-            <p><b>Автор:</b> <a href="">{{ object.avtor }}</a></p>
+            <p><b>Автор:</b> <a href="{% url 'user-news' object.avtor %}">{{ object.avtor }}</a></p>
         </div>
       </div>
       {% if object.avtor == user %}
